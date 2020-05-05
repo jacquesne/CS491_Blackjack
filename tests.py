@@ -4,6 +4,8 @@ import game
 import dealer
 import player
 
+#UPDATE
+
 
 class TestCard(unittest.TestCase):
     """Deck unit tests for Card objects"""
@@ -123,11 +125,20 @@ class TestGame(unittest.TestCase):
         winner, score = test_game.get_winner(test_dealer, test_player)
         self.assertEqual(score, 4)
 
-    def test_get_winner_bust(self):
+    def test_get_winner_player_bust(self):
         test_dealer = dealer.Dealer()
         test_player = player.Player()
         test_dealer.hand = [deck.Card(8, 0)]
         test_player.hand = [deck.Card(10, 0), deck.Card(10, 0), deck.Card(10, 0)]
+        test_game = game.Game()
+        winner, score = test_game.get_winner(test_dealer, test_player)
+        self.assertEqual(score, -1)
+
+    def test_get_winner_dealer_bust(self):
+        test_dealer = dealer.Dealer()
+        test_player = player.Player()
+        test_player.hand = [deck.Card(8, 0)]
+        test_dealer.hand = [deck.Card(10, 0), deck.Card(10, 0), deck.Card(10, 0)]
         test_game = game.Game()
         winner, score = test_game.get_winner(test_dealer, test_player)
         self.assertEqual(score, -1)
