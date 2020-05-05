@@ -6,6 +6,7 @@ import player
 
 
 class TestCard(unittest.TestCase):
+    """Deck unit tests for Card objects"""
     def test_card_get_value_ace(self):
         card = deck.Card(1, 0)
         value = card.get_value()
@@ -31,6 +32,7 @@ class TestCard(unittest.TestCase):
 
 
 class TestDeck(unittest.TestCase):
+    """Deck unit tests for the Deck object"""
     def test_generate_deck_first(self):
         card_deck = deck.Deck.generate_decks(1)
         self.assertEqual(card_deck[0].name, "Ace")
@@ -64,6 +66,7 @@ class TestDeck(unittest.TestCase):
 
 
 class TestGame(unittest.TestCase):
+    """Includes integration tests between Deck, Player, Dealer, and Game"""
     def test_get_hand_score_no_aces(self):
         hand = [deck.Card(5, 0), deck.Card(12, 0)]
         score = game.Game.get_hand_score(hand)
@@ -131,6 +134,7 @@ class TestGame(unittest.TestCase):
 
 
 class TestDealer(unittest.TestCase):
+    """Contains integration tests between Deck, Dealer, and Player"""
     def test_deal(self):
         test_deck = deck.Deck()
         deal = dealer.Dealer()
