@@ -120,6 +120,15 @@ class TestGame(unittest.TestCase):
         winner, score = test_game.get_winner(test_dealer, test_player)
         self.assertEqual(score, 4)
 
+    def test_get_winner_bust(self):
+        test_dealer = dealer.Dealer()
+        test_player = player.Player()
+        test_dealer.hand = [deck.Card(8, 0)]
+        test_player.hand = [deck.Card(10, 0), deck.Card(10, 0), deck.Card(10, 0)]
+        test_game = game.Game()
+        winner, score = test_game.get_winner(test_dealer, test_player)
+        self.assertEqual(score, -1)
+
 
 class TestDealer(unittest.TestCase):
     def test_deal(self):
