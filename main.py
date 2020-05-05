@@ -34,7 +34,9 @@ def blackjack(game, player, dealer, deck):
         print(f"Dealer has {dealer_score} points.")
         print(f"You have {player_score} points.")
         winner, score = game.get_winner(dealer, player)
-        if winner == dealer and score == -1:
+        if winner == player and score == -1:
+            print("Dealer busted! You win.")
+        elif winner == dealer and score == -1:
             print("You busted! The dealer wins.")
         elif winner == player:
             print(f"You win by {score} {'point' if score == 1 else 'points'}!")

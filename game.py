@@ -16,6 +16,9 @@ class Game:
     def get_winner(self, dealer, player):
         dealer_score = self.get_hand_score(dealer.hand)
         player_score = self.get_hand_score(player.hand)
+        if dealer_score > 21:
+            player.wins += 1
+            return player, -1
         if player_score > 21:
             dealer.wins += 1
             return dealer, -1
